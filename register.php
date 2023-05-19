@@ -45,7 +45,7 @@ include("server.php");
 			    </span>
 			  </div>
 			</nav>
-	<div class="header">
+	<div class="header" style="background: linear-gradient(to right, #007bff, #00a5ff">
 		<h2>Register</h2>
 	</div>
 
@@ -53,26 +53,26 @@ include("server.php");
 		<!--display errors-->
 		<?php include('errors.php'); ?>
 		<div class="input-group">
-			<label>Username</label>
+			<label><b>Username</b></label>
 			<input type="text" name="username">
 		</div>
 		<div class="input-group">
-			<label>Email</label>
+			<label><b>Email</b></label>
 			<input type="email" name="email">
 		</div>
 		<div class="input-group">
-			<label>Password</label>
+			<label><b>Password</b></label>
 			<input type="password" name="password_1">
 		</div>
 		<div class="input-group">
-			<label>Confirm password</label>
+			<label><b>Confirm password</b></label>
 			<input type="password" name="password_2">
 		</div>
 		<div class="input-group">
-			<button type="submit" name="register" class="btn" style="color: white; background: #5F9EA0;">Register</button>
+			<button type="submit" name="register" class="btn" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff);"><b>Register</b></button>
 		</div>
 		<p>
-			Already a member?<a href="login.php">Sign in</a>
+			Already a member?<a href="login.php"><b>Sign in</b></a>
 		</p>
 	</form>
 		<?php include('footer.php'); ?>

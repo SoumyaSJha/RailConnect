@@ -9,14 +9,16 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
-		h1{
+		 body {
+            background: #F8F8FF;
+        }
+		h1,h2{
 			margin-left: auto;
 			margin-right: auto;
 			margin-top: 10px;
 			margin-bottom: 0px;
 			text-align: center;
 			padding: 10px;
-			color: #1457a7;
 		}
 	</style>
 </head>
@@ -48,10 +50,10 @@
 					    </span>
 					</div>
 				</nav>
-				<div class="alert alert-warning" role="alert">
-				  <i class="fa fa-exclamation-triangle"></i> No concessional tickets allowed for this Train / Quota/Class.
-				</div>
-				<h1>Passenger Details</h1>
+				<br><br><br>
+				<b><h1 style="color:#007bff; font-size: 50px;">BOOK</h1>
+<h2 style="color:black; text-align:center; font-size: 40px;">YOUR TICKET</h2></b>
+
 			<?php 
 				$id=$_GET['id'];
 			    $fare=$_GET['fare'];
@@ -68,7 +70,7 @@
 				while($n!=0){
 			?>
 					<form class="container block" style="margin-top: 10px;" action="payment.php?n=<?php echo $n;?>" method="post">
-					<div style="border: 1px solid grey; padding: 8px 30px;	background:#F8F8FF; margin-top: 30px;">
+					<div style="border: 1px solid grey; padding: 8px 30px;	background:white; margin-top: 30px;">
 					<div class="form-row" style="margin-bottom:10px">
 						<i class="fa fa-address-card w3-xlarge"></i><div style="margin-left: 20px;"><?php echo $i;?></div>
 					</div>
@@ -97,7 +99,9 @@
 				}
 			?>
 			<div class="col-md" style="margin-top: 35px">
-			  		<center><button class="btn btn-info" type="submit" name="details">Submit</button></center>
+			<center>
+  <button class="btn btn-info" style="background:linear-gradient(to right, #007bff, #00a5ff); padding: 10px 20px; font-size: 18px;" type="submit" name="details">SUBMIT</button>
+</center>
 			 </div>
 		</form>
 		<?php include('footer.php'); ?>

@@ -22,7 +22,7 @@
 			margin: 10px auto;
 			font-size: 15px;
 			border: none;
-			border-radius: 5px;
+			border-radius: 20px;
 		}
 	</style>
 </head>
@@ -50,11 +50,11 @@
 			    </span>
 			  </div>
 			</nav>
-	<div class="header">
+	<div class="header" style="background: linear-gradient(to right, #007bff, #00a5ff)">
 		<h2>Login</h2>
 	</div>
 
-	<form method="post" action="login.php">
+	<form method="post" action="login.php" style="height: 500px; ">
 		<?php include('errors.php'); ?>
 		<div class="input-group">
 			<label>Username</label>
@@ -65,7 +65,7 @@
 			<input type="password" name="password">
 		</div>
 		<div class="input-group">
-			<button type="submit" name="login" class="btn" style="color: white; background: #5F9EA0;">  Login  </button>
+			<button type="submit" name="login" class="btn" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff);">  Login  </button>
 		</div>
 		<p>
 			Not yet a member?<a href="register.php">Sign up</a>

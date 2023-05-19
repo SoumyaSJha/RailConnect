@@ -15,14 +15,8 @@ include("server2.php");
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Book tickets</title>
 	<style>
-	body{
-		background-image: url('https://www.irctc.co.in/nget/swach_banner2.391192cab480269195cd.jpg');
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-	aside{
-		margin: 10px;
-	}
+	
+	
 
 	#profile{
 		float:top;
@@ -109,12 +103,13 @@ include("server2.php");
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
 				      </li>
 				    </ul>		   
-						<span class="navbar-text" class="nav-item">
-						    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
-						</span>
-					    <span class="navbar-text" class="nav-item">
-					      <a class="nav-link" href="index.php?logout='1'">Logout</a>
-					    </span>
+					<span class="navbar-text" class="nav-item">
+    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
+</span>
+<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+    <a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); padding: 10px; border: none; border-radius: 10px;">Logout</a>
+</span>
+
 				<?php endif ?>
 				<?php if(!isset($_SESSION['username'])): ?>
 					<div class="collapse navbar-collapse" id="navbarText">
@@ -139,9 +134,9 @@ include("server2.php");
 			  </div>
 			</nav>
 			<form method="post" action="confirm.php">
-  <aside id="profile">
-    <h2>BOOK</h2>
-    <h4>YOUR TICKET</h4>
+			<aside id="profile" style="text-align: center; margin: 80px auto;  height: 500px;">
+    <h2 style="color:#007bff;">BOOK</h2>
+    <h4 >YOUR TICKET</h4>
     <span class="material-icons">directions_transit</span><br>
     <select name="from" class="uh" required>
       <option value="">From*</option>
@@ -181,7 +176,7 @@ include("server2.php");
       <option value="2A">AC Second Class(2A)</option>
       <option value="3A">AC Third Class(3A)</option>
     </select>
-    <button class="btn info hjk" name="trains">Find Trains</button>
+    <button class="btn info hjk" name="trains" style="background-image: linear-gradient(to right, #007bff, #00a5ff); ">Find Trains</button>
     <script>document.getElementById('datePicker').valueAsDate = new Date();</script>
   </aside>
   <?php include('footer.php'); ?>

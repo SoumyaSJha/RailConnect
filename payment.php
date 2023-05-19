@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<title>Payment Portal</title>
 	<style>
+		 body {
+            background: #F8F8FF;
+        }
 		.padding {
 			    padding: 5rem !important
 			}
@@ -70,10 +73,10 @@
         <div class="container-fluid d-flex justify-content-center">
             <div class="col-sm-8 col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-6"> <span>CREDIT/DEBIT CARD PAYMENT</span> </div>
-                            <div class="col-md-6 text-right" style="margin-top: -5px;"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img src="https://img.icons8.com/color/36/000000/mastercard.png"> <img src="https://img.icons8.com/color/36/000000/amex.png"> </div>
+                    <div class="card-header" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff)">
+                        <div class="row" >
+                           <br> <div class="col-md-6" style="margin-top:5px;"><span> <h4>CREDIT/DEBIT CARD PAYMENT</h4></span></div>
+                            <div class="col-md-6 text-right" style="margin-top: 5px;"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img src="https://img.icons8.com/color/36/000000/mastercard.png"> <img src="https://img.icons8.com/color/36/000000/amex.png"> </div>
                         </div>
                     </div>
                     <div class="card-body" style="height: 350px">
@@ -87,13 +90,15 @@
                             </div>
                         </div>
                         <div class="form-group"> <label for="numeric" class="control-label">CARD HOLDER NAME</label> <input type="text" class="input-lg form-control"> </div>
-                        <div class="form-group"> <button name="payment" type="submit" class="btn btn-success btn-lg form-control" style="font-size: .8rem;">MAKE PAYMENT</button> </div>
-	                    </div>
+						<div class="form-group text-center"> 
+            <button name="payment" type="submit" class="btn btn-primary" style="font-size: 20px;background: linear-gradient(to right, #007bff, #00a5ff);">MAKE PAYMENT</button>
+        </div>	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </div>
 	</form>
+	<br><br>
 	<script type="text/javascript">
 		$(function($) {
 			$('[data-numeric]').payment('restrictNumeric');

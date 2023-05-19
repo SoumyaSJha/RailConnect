@@ -97,7 +97,7 @@
 					</select>
 			    </div>
 			    <div class="col-md" style="margin-top: 35px">
-			  		<button class="btn btn-info" type="submit" name="modify">Modify Search</button><br><br><br>
+			  		<button class="btn btn-primary" style="background: linear-gradient(to right, #007bff, #00a5ff);" type="submit" name="modify">Modify Search</button><br><br><br>
 			  	</div>
 			</div>
 		</form>
@@ -122,12 +122,12 @@
 						echo "<h5 class='container' style='margin-bottom:40px;'><div class='row'><div class='col-md'><b>$from<i class='material-icons' style='font-size:20px;'>arrow_forward</i>$to</div>Class: $class<div class='col-md' style='text-align:right;'>$y</b></div></div></h5>";
 						echo '<table class="container"> 
 
-						<th> Train Number </th> 
-						<th> Train Name </th>
-						<th> Depature Time </th>
-						<th> Arrival Time </th>
-						<th> Fare </th>
-						<th> Book Ticket </th>';
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Train Number </th> 
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Train Name </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Depature Time </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Arrival Time </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Fare </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Book Ticket </th>';
 						while (($row = mysqli_fetch_assoc($r)) && ($ro = mysqli_fetch_assoc($r1)))
 						{ 
 						?>
@@ -137,8 +137,10 @@
 						<td><?php echo $row['Departure_Time']; ?></td>
 						<td><?php echo $ro['Arrival_Time']; ?></td>
 						<td><?php echo "Rs.".$row[$class]; ?></td>
-						<td><button type="button" class="btn-success" style="border: none; border-radius: 5px; padding-left: 5px; padding-right: 5px;"><a href="passenger.php?id=<?php echo $row['Train_No'];?>&n=<?php echo "1";?>&fare=<?php echo $row[$class];?>&date=<?php if (isset($date)) echo $date;?>&class2=<?php echo $class;?>" style="color:white">Book Now</a></button></td>
-						</tr>';
+						<td><button type="button" class="btn-success" style="border: none; border-radius: 5px; padding-left: 5px; padding-right: 5px; 
+
+"><a href="passenger.php?id=<?php echo $row['Train_No'];?>&n=<?php echo "1";?>&fare=<?php echo $row[$class];?>&date=<?php if (isset($date)) echo $date;?>&class2=<?php echo $class;?>" style="color:white">Book Now</a></button></td>
+						</tr>
 						<?php 
 						}
 						echo '</table>';
@@ -164,12 +166,12 @@
 						echo "<h5 class='container' style='margin-bottom:40px;'><div class='row'><div class='col-md'><b>$from2<i class='material-icons' style='font-size:20px;'>arrow_forward</i>$to2</div>Class: $class2<div class='col-md' style='text-align:right;'>$y</b></div></div></h5>";
 						echo '<table class="container"> 
 
-						<th> Train Number </th> 
-						<th> Train Name </th>
-						<th> Depature Time </th>
-						<th> Arrival Time </th>
-						<th> Fare </th>
-						<th> Book Ticket </th>';
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Train Number </th> 
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Train Name </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Depature Time </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Arrival Time </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Fare </th>
+						<th style="background:linear-gradient(to right, #007bff, #00a5ff);"> Book Ticket </th>';
 						while (($row = mysqli_fetch_assoc($r)) && ($ro = mysqli_fetch_assoc($r1)))
 						{ 
 						?>
@@ -180,13 +182,14 @@
 						<td><?php echo $ro['Arrival_Time']; ?></td>
 						<td><?php echo "Rs.".$_POST['num']*$row[$class2]; ?></td>
 						<td><button type="button" class="btn-success" style="border: none; border-radius: 5px; padding-left: 5px; padding-right: 5px;"><a href="passenger.php?id=<?php echo $row['Train_No'];?>&n=<?php echo $_POST['num'];?>&fare=<?php echo $row[$class2];?>&date=<?php if (isset($date2)) echo $date2;?>&class2=<?php echo $class2;?>" style="color:white">Book Now</a></button></td>
-						</tr>';
+						</tr>
 						<?php 
 						}
 						echo '</table>';
 					}
 				}
 			?>
+			<br><br><br><br>
 			<?php include('footer.php'); ?>
 </body>
 </html>
