@@ -5,12 +5,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<title>TRAIN SCHEDULE</title>
+	<title>TRAIN STATUS</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<link rel="stylesheet" type="text/css" href="style2.css">
 	<?php
 			$conn=mysqli_connect("localhost","root","soumyajha126","registration");
 			$train_no="";
 		?>	
+	<style>
+		
+		h1{
+			color:black;
+		}
+		button .btn{
+			padding: 10px;
+			margin: 10px auto;
+			font-size: 15px;
+			border: none;
+			border-radius: 20px;
+		}
+		
+		
+	</style>
+	<style>
+
+
+.train-info h1 {
+color:#007bff;
+  font-size: 30px;
+}
+
+.train-info p {
+	color:#007bff;
+  font-size: 30px;
+  text-align:center;
+}
+</style>
+
 </head>
 <body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -26,18 +58,19 @@
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item active">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
 				      </li>
 				    </ul>		   
-						<span class="navbar-text" class="nav-item">
-						    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
-						</span>
-					    <span class="navbar-text" class="nav-item">
-					      <a class="nav-link" href="index.php?logout='1'">Logout</a>
-					    </span>
+					<span class="navbar-text">
+    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
+</span>
+<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+    <a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
+</span>
+
 				<?php endif ?>
 				<?php if(!isset($_SESSION['username'])): ?>
 					<div class="collapse navbar-collapse" id="navbarText">
@@ -46,7 +79,7 @@
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item active">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -61,73 +94,157 @@
 				<?php endif ?>
 			  </div>
 			</nav>
-	<form action="train_stas.php" method="post">
-		<h1>Train Schedule: <?php if (isset($_POST['train_no'])) echo $_POST['train_no']; ?></h1>
-		<div class="contain">
-			<label>Enter train Number:</label>
-			<input type="text" name="train_no" value="<?php if (isset($_POST['train_no'])) echo $_POST['train_no']; ?>" class="label">
-			<button type="submit" name="submit" class="btn">Submit</button><br><br>
-	 	</div>
+			<br>
+			<div class="header" style="background: linear-gradient(to right, #007bff, #00a5ff); padding-top: 30px;">
+    <h2>TRAIN STATUS<br><?php if (isset($_POST['train_no'])) echo $_POST['train_no']; ?></h2>
+</div>
 
-		<?php
-			if(isset($_POST["submit"])){
-				$train_no=mysqli_real_escape_string($conn,$_POST['train_no']);
-				$query="SELECT `SN`,`Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code` FROM `train_schedule` WHERE `Train_No`=$train_no";
-				$q="SELECT * FROM train_info WHERE Train_No=$train_no";
-				$r=mysqli_query($conn,$q);
-				$result=mysqli_query($conn,$query);
-				if(!$r||mysqli_num_rows($r)==0){
-						echo "<h3>Please enter valid train number.</h3>";
-					}
-					else{
-						echo "<div style='padding:20px; width:50%; background-color:' class='container jumbotron'>";
-						echo '<table> 
+<div >
+    <form action="train_stas.php" method="post" style="height: 350px;padding-bottom:30px;">
+        <div class="input-group">
+            <label>Train Number:</label>
+        </div>
+        <div class="input-group">
+            <input type="text" name="train_no" value="<?php if (isset($_POST['train_no'])) echo $_POST['train_no']; ?>" class="input-group">
+        </div>
+		<div class="input-group" style="padding-bottom: 30px;">
+        <center>
+            <button type="submit" name="submit" class="btn-primary" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin: 10px; padding: 10px; border: none; border-radius: 10px;">Get Schedule</button>
+            <button type="submit" name="track_train" class="btn-primary" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin: 10px; padding: 10px; border: none; border-radius: 10px;">Track Train</button>
+        </center>
+    </div>
+</div>
+<br>
 
-						<th> Train Number </th> 
-						<th> Train Name </th>
-						<th> From Station </th>
-						<th> Destination Status </th>';
-						while ($row = mysqli_fetch_assoc($r))
-						{ 
-						echo '<tr> 
-						<td>'.$row['Train_No'].'</td>
-						<td>'.$row['Train_Name'].'</td>
-						<td>'.$row['Source_Station_Name'].'</td>
-						<td>'.$row['Destination_Station_Name'].'</td> 
-						</tr>'; 
-						}
-						echo '</table>';
-						echo "</div>";
-						echo "<br>";
-						echo '<table> 
-						<th> S.N. </th> 
-						<th> Station Code </th>
-						<th> Station Name </th>
-						<th> Route Number </th>
-						<th> Arrival Time </th>
-						<th> Departure Time </th>
-						<th> Distance </th>';
-						while ($row = mysqli_fetch_assoc($result))
-						{ 
-						echo '<tr> 
-						<td>'.$row['SN'].'</td>
-						<td>'.$row['Station_Code'].'</td>
-						<td>'.$row['Station_Name'].'</td>
-						<td>'.$row['Route_Number'].'</td> 
-						<td>'.$row['Arrival_time'].'</td>
-						<td>'.$row['Departure_Time'].'</td>
-						<td>'.$row['Distance'].'</td>
-						</tr>'; 
-						}
-						echo '</table>';
-					}
-			}
+<?php
+if (isset($_POST["submit"])) {
+    $train_no = mysqli_real_escape_string($db, $_POST['train_no']);
+    $query = "SELECT `SN`,`Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code` FROM `train_schedule` WHERE `Train_No`=$train_no";
+    $q = "SELECT * FROM train_info WHERE Train_No=$train_no";
+    $r = mysqli_query($db, $q);
+    $result = mysqli_query($db, $query);
+
+    if (!$r || mysqli_num_rows($r) == 0) {
+        echo "<h3>Please enter a valid train number.</h3>";
+    } else {
+        echo "<div style='padding:20px; width:50%; background-color:#fff;' class='container jumbotron'>";
+        echo '<table> 
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Train Number </th> 
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff); "> Train Name </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> From Station </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff); "> Destination Station Name </th>';
+        while ($row = mysqli_fetch_assoc($r)) {
+            echo '<tr> 
+            <td>' . $row['Train_No'] . '</td>
+            <td>' . $row['Train_Name'] . '</td>
+            <td>' . $row['Source_Station_Name'] . '</td>
+            <td>' . $row['Destination_Station_Name'] . '</td> 
+            </tr>';
+        }
+        echo '</table>';
+        echo "</div>";
+        echo "<br>";
+        echo '<table> 
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> S.N. </th> 
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Station Code </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Station Name </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Route Number </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Arrival Time </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Departure Time </th>
+        <th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Distance </th>';
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<tr> 
+            <td>' . $row['SN'] . '</td>
+            <td>' . $row['Station_Code'] . '</td>
+            <td>' . $row['Station_Name'] . '</td>
+            <td>' . $row['Route_Number'] . '</td> 
+            <td>' . $row['Arrival_time'] . '</td>
+            <td>' . $row['Departure_Time'] . '</td>
+            <td>' . $row['Distance'] . '</td>
+            </tr>';
+        }
+        echo '</table>';
+    }
+}
+
+// Train Tracker
+if (isset($_POST["track_train"])) {
+    $train_no = mysqli_real_escape_string($db, $_POST['train_no']);
+
+    date_default_timezone_set('Asia/Kolkata');
+    $currentTime = date("H:i:s"); // Get the current time
+
+    $query = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
+              FROM `train_schedule`
+              WHERE `Train_No` = ? AND TIME(`Arrival_time`) <= TIME(?) AND TIME(`Departure_Time`) >= TIME(?)
+              ORDER BY `SN`";
+
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("sss", $train_no, $currentTime, $currentTime);
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($sn, $stationName, $routeNumber, $arrivalTime, $departureTime, $distance, $stationCode);
+
+    if ($stmt->num_rows > 0) {
+        // Train is currently at a station
+        $stmt->fetch();
+        $remainingTime = strtotime($departureTime) - strtotime($currentTime);
+
+        if ($remainingTime <= 0) {
+            // Train is about to depart or has already departed
+            if ($stmt->fetch()) {
+                $nextStationName = $stationName;
+                $nextDepartureTime = $departureTime;
+                $timeToNextStation = strtotime($nextDepartureTime) - strtotime($currentTime);
+                $formattedTime = date("H:i:s", $timeToNextStation); // Format time as hour:min:seconds
+                echo "<h1>Train is currently at $stationName<br>It will depart shortly<br> Next station: $nextStationName<br> Time to reach: $formattedTime.</h1>";
+            }
+        } else {
+            // Train is currently at the station
+            echo "<div class='train-info'><h1>Train is currently at $stationName.</h1></div>";
+        }
+    } else {
+        $stmt->close();
+
+        // Retrieve the next station's details
+        $queryNextStation = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
+                             FROM `train_schedule`
+                             WHERE `Train_No` = ? AND TIME(`Departure_Time`) >= TIME(?)
+                             ORDER BY `SN` ASC LIMIT 1";
+
+        $stmtNextStation = $db->prepare($queryNextStation);
+        $stmtNextStation->bind_param("ss", $train_no, $currentTime);
+        $stmtNextStation->execute();
+        $stmtNextStation->store_result();
+        $stmtNextStation->bind_result($sn, $stationName, $routeNumber, $arrivalTime, $departureTime, $distance, $stationCode);
+
+        if ($stmtNextStation->num_rows > 0 && $stmtNextStation->fetch()) {
+            $nextStationName = $stationName;
+            $nextDepartureTime = $departureTime;
+            $timeToNextStation = strtotime($nextDepartureTime) - strtotime($currentTime);
+            $formattedTime = date("H:i:s", $timeToNextStation); // Format time as hour:min:seconds
+			echo "<center><div class='train-info'>";
+			echo "<h1>Train is not at any station.</h1>";
+			echo "<p>Next station: $nextStationName</p>";
+			echo "<p>Time to reach: $formattedTime</p>";
+			echo "</div></center>";
+					} else {
+            echo "<div class='train-info'><h1>Train information not available.</h1></div>";
+        }
+
+        $stmtNextStation->close();
+    }
 
 
-		?>
+
+	
+	
+}
+?>
+
 		
 	</form>
-	
+	<br>
 	<div style="margin-top:65px">
 	<?php include('footer.php'); ?>
 	</div>

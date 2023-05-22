@@ -24,7 +24,7 @@
 					        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+					        <a class="nav-link" href="train_stas.php">Train Status</a>
 					      </li>
 					      <li class="nav-item">
 					        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -33,8 +33,8 @@
 							<span class="navbar-text" class="nav-item">
 							    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
 							</span>
-						    <span class="navbar-text" class="nav-item">
-						      <a class="nav-link" href="index.php?logout='1'">Logout</a>
+							<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+							<a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
 						    </span>
 						</div>
 					</nav><br>
@@ -48,14 +48,14 @@
 				$r=mysqli_query($conn,$q);
 				$result=mysqli_query($conn,$query);
 				$r1=mysqli_query($conn,$q1);
-				echo '<h1 style="margin-top: 30px; color:#e91e63;"><b>JOURNEY DETAILS</b></h1>';
+				echo '<br><br><h1 style="margin-top: 0px; color:black;"><b>JOURNEY DETAILS</b></h1>';
 			
 						echo '<table style="margin-top: 0px;"> 
 
-						<th> PNR NUMBER </th> 
-						<th> Train Number </th>
-						<th> Amount Paid Per Person</th>
-						<th> Date of Journey </th>';
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> PNR Number </th> 
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Train Number </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Amount Paid Per Person</th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Date of Journey </th>';
 						while ($row = mysqli_fetch_assoc($result))
 						{ 
 						$y=$row['Class'];
@@ -71,14 +71,15 @@
 						
 						echo "<br>";
 
-					echo '<h1 style="margin-top: 40px; color:#e91e63;"><b>PASSENGER DETAILS</b></h1>';
+					echo '<h1 style="margin-top: 40px; color:black;"><b>PASSENGER DETAILS</b></h1>';
 						echo '<table class="container" style="margin-top: 0px;"> 
 
-						<th> Passenger Name </th> 
-						<th> Gender </th>
-						<th> Age </th>
-						<th> Class</th>
-						<th> Status of Booking</th>';
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Passenger Name </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Gender </th>
+ 
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Age </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Class</th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Status of Booking</th>';
 						while ($row1 = mysqli_fetch_assoc($r1))
 						{ 
 						echo '<tr> 
@@ -93,6 +94,7 @@
 						echo "<br>";
 					}
 		?>
+		<br><br><br>
 		<?php else: ?>
 					<?php header('location: login.php'); ?>
 				<?php endif ?>

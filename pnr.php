@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<title>TRAIN SCHEDULE</title>
+	<title>Train Status</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
 	<link rel="stylesheet" type="text/css" href="style2.css">
+
 	<?php
 			$conn=mysqli_connect("localhost","root","soumyajha126","registration");
 			$train_no="";
@@ -25,7 +28,7 @@
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item active">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -34,8 +37,8 @@
 						<span class="navbar-text" class="nav-item">
 						    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
 						</span>
-					    <span class="navbar-text" class="nav-item">
-					      <a class="nav-link" href="index.php?logout='1'">Logout</a>
+						<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+						<a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
 					    </span>
 				<?php endif ?>
 				<?php if(!isset($_SESSION['username'])): ?>
@@ -45,7 +48,7 @@
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item active">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -60,13 +63,17 @@
 				<?php endif ?>
 			  </div>
 			</nav>
+			<div class="header" style="background: linear-gradient(to right, #007bff, #00a5ff); padding-top: 10px;margin-top:100px;">
+			<h1 style="color:white;">BOOKING DETAILS <br><?php if (isset($_POST['pnr'])) echo $_POST['pnr']; ?></h1>
+				</div>
 	<form action="pnr.php" method="post">
-		<h1>BOOKING DETAILS: <?php if (isset($_POST['pnr'])) echo $_POST['pnr']; ?></h1>
-		<div class="contain">
-			<label>Enter PNR Number:</label>
-			<input type="text" name="pnr" value="<?php if (isset($_POST['pnr'])) echo $_POST['pnr']; ?>" class="label">
-			<button type="submit" name="submit" class="btn">Submit</button><br><br>
-	 	</div>
+		<div class="input-group">
+			<label>PNR Number:</label> </div>
+			<div class="input-group">
+			<input type="text" name="pnr" value="<?php if (isset($_POST['pnr'])) echo $_POST['pnr']; ?>"class="label"> </div>
+			<div class="input-group">
+			<button type="submit" name="submit" class="btn" style="background: linear-gradient(to right, #007bff, #00a5ff); margin: 10px; padding: 10px; border: none; border-radius: 10px;">Submit</button><br><br>
+	 	</div><br><br><br><br>
 	 </form>
 	 <?php
 			$conn=mysqli_connect('localhost','root','soumyajha126','registration');
@@ -77,13 +84,13 @@
 				$result=mysqli_query($conn,$query);
 				$r1=mysqli_query($conn,$q1);
 						
-						echo '<h1 style="margin-top: 0px; color:#e91e63;"><b>JOURNEY DETAILS</b></h1>';
+						echo '<br><br><h1 style="margin-top: 0px; color:black;"><b>JOURNEY DETAILS</b></h1>';
 						echo '<table style="margin-top: 0px;"> 
 
-						<th> PNR NUMBER </th> 
-						<th> Train Number </th>
-						<th> Amount Paid Per Person</th>
-						<th> Date of Journey </th>';
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> PNR Number </th> 
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Train Number </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Amount Paid Per Person</th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Date of Journey </th>';
 						while ($row = mysqli_fetch_assoc($result))
 						{ 
 						$y=$row['Class'];
@@ -99,14 +106,15 @@
 						
 						echo "<br>";
 
-					echo '<h1 style="margin-top: 40px; color:#e91e63;"><b>PASSENGER DETAILS</b></h1>';
+					echo '<h1 style="margin-top: 40px; color:black;"><b>PASSENGER DETAILS</b></h1>';
 						echo '<table class="container" style="margin-top: 0px;"> 
 
-						<th> Passenger Name </th> 
-						<th> Age </th>
-						<th> Gender </th>
-						<th> Class</th>
-						<th> Status of Booking</th>';
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Passenger Name </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Gender </th>
+ 
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Age </th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Class</th>
+						<th style="background: linear-gradient(to right, #007bff, #00a5ff);"> Status of Booking</th>';
 						while ($row1 = mysqli_fetch_assoc($r1))
 						{ 
 						echo '<tr> 

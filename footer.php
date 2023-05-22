@@ -9,9 +9,9 @@
 
       <!-- Grid column -->
       <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
-        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size:20px ;">Railways.Live</h6>
-        <p >This is an initial level website aimed to be useful for booking tickets from anywhere in the world.
-          This is a part of project for the course of <b>DBMS</b></p><br>
+        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size:20px ;">Railways Connect: Your Gateway to Unforgettable Journeys</h6>
+
+        <p >At Railways Connect, we believe that every journey holds the promise of adventure, discovery, and unforgettable memories. With our commitment to excellence, we strive to provide you with a seamless and delightful travel experience from start to finish.</p>
       </div>
       <!-- Grid column -->
 
@@ -28,10 +28,10 @@
     <a href="register.php" style="font-size:18px; color:#007bff" >Register</a>
   </p>
   <p>
-    <a href="pnr.php" style="font-size:18px; color:#007bff">Inquiry</a>
+    <a href="pnr.php" style="font-size:18px; color:#007bff">PNR Enquiry</a>
   </p>
   <p>
-    <a href="train_stas.php" style="font-size:18px; color:#007bff" >Train Schedule</a>
+    <a href="train_stas.php" style="font-size:18px; color:#007bff" >Train Status</a>
   </p>
 </div>
 

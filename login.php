@@ -39,7 +39,7 @@
 			        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 			      </li>
 			      <li class="nav-item">
-			        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+			        <a class="nav-link" href="train_stas.php">Train Status</a>
 			      </li>
 			      <li class="nav-item">
 			        <a class="nav-link" href="pnr.php">PNR Enquiry</a>

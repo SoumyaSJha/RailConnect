@@ -54,7 +54,7 @@
 					        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 					      </li>
 					      <li class="nav-item">
-					        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+					        <a class="nav-link" href="train_stas.php">Train Status</a>
 					      </li>
 					      <li class="nav-item">
 					        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -63,8 +63,8 @@
 							<span class="navbar-text" class="nav-item">
 							    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
 							</span>
-						    <span class="navbar-text" class="nav-item">
-						      <a class="nav-link" href="index.php?logout='1'">Logout</a>
+							<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+							<a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
 						    </span>
 						</div>
 					</nav>

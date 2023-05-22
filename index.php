@@ -97,7 +97,7 @@ include("server2.php");
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -107,7 +107,7 @@ include("server2.php");
     Welcome <strong><?php echo $_SESSION['username']; ?></strong>
 </span>
 <span class="navbar-text" class="nav-item" style="margin-left: 10px;">
-    <a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); padding: 10px; border: none; border-radius: 10px;">Logout</a>
+<a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
 </span>
 
 				<?php endif ?>
@@ -118,7 +118,7 @@ include("server2.php");
 				        <a class="nav-link" href="login.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -142,7 +142,7 @@ include("server2.php");
       <option value="">From*</option>
       <?php
         $db=mysqli_connect('localhost','root','soumyajha126','registration');
-        $q = "SELECT DISTINCT Source_Station_Name FROM train_info";
+        $q = "SELECT DISTINCT Source_Station_Name FROM train_info order by Source_Station_Name";
         $r=mysqli_query($db,$q);
         while ($row = mysqli_fetch_assoc($r)) {
           $source = $row['Source_Station_Name'];
@@ -157,7 +157,7 @@ include("server2.php");
     <select name="to" class="uh" required>
       <option value="">To*</option>
       <?php
-        $q = "SELECT DISTINCT Destination_Station_Name FROM train_info";
+        $q = "SELECT DISTINCT Destination_Station_Name FROM train_info order by Destination_Station_Name";
         $r=mysqli_query($db,$q);
         while ($row = mysqli_fetch_assoc($r)) {
           $destination = $row['Destination_Station_Name'];

@@ -24,7 +24,7 @@
 				        <a class="nav-link" href="index.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item">
-				        <a class="nav-link" href="train_stas.php">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -33,8 +33,8 @@
 						<span class="navbar-text" class="nav-item">
 						    Welcome <strong><?php echo $_SESSION['username']; ?></strong>
 						</span>
-					    <span class="navbar-text" class="nav-item">
-					      <a class="nav-link" href="index.php?logout='1'">Logout</a>
+						<span class="navbar-text" class="nav-item" style="margin-left: 10px;">
+						<a class="nav-link" href="index.php?logout='1'" style="color: white; background: linear-gradient(to right, #007bff, #00a5ff); margin:10px;padding: 10px; border: none; border-radius: 10px;">Logout</a>
 					    </span>
 				<?php endif ?>
 				<?php if(!isset($_SESSION['username'])): ?>
@@ -44,7 +44,7 @@
 				        <a class="nav-link" href="login.php">Book Tickets<span class="sr-only">(current)</span></a>
 				      </li>
 				      <li class="nav-item active">
-				        <a class="nav-link" href="train_stas.php#">Train Schedule</a>
+				        <a class="nav-link" href="train_stas.php#">Train Status</a>
 				      </li>
 				      <li class="nav-item">
 				        <a class="nav-link" href="pnr.php">PNR Enquiry</a>
@@ -111,9 +111,9 @@
 				$r2=mysqli_query($db,$q2);
 				$row = mysqli_fetch_assoc($r2);
 				$y=$row['days'];
-				$q="SELECT train_info.Train_No,Train_Name,$class,`Departure_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from' AND Destination_Station_Name='$to' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$to'";
+				$q="SELECT train_info.Train_No,Train_Name,$class,`Departure_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from' AND Destination_Station_Name='$to' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$from'";
 				$r=mysqli_query($db,$q);
-				$q1="SELECT `Arrival_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from' AND Destination_Station_Name='$to' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$from'";
+				$q1="SELECT `Arrival_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from' AND Destination_Station_Name='$to' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$to'";
 				$r1=mysqli_query($db,$q1);
 				if(!$r||mysqli_num_rows($r)==0){
 						echo "<h3>No Trains Found.</h3>";
@@ -155,9 +155,9 @@
 				$r2=mysqli_query($db,$q2);
 				$row = mysqli_fetch_assoc($r2);
 				$y=$row['days'];
-				$q="SELECT train_info.Train_No,Train_Name,$class2,`Departure_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from2' AND Destination_Station_Name='$to2' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$to2'";
+				$q="SELECT train_info.Train_No,Train_Name,$class2,`Departure_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from2' AND Destination_Station_Name='$to2' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$from2'";
 				$r=mysqli_query($db,$q);
-				$q1="SELECT `Arrival_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from2' AND Destination_Station_Name='$to2' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$from2'";
+				$q1="SELECT `Arrival_Time` FROM train_info,train_schedule WHERE Source_Station_Name='$from2' AND Destination_Station_Name='$to2' AND days<>'$y' AND train_schedule.Train_No=train_info.Train_No AND Station_Name='$to2'";
 				$r1=mysqli_query($db,$q1);
 				if(!$r||mysqli_num_rows($r)==0){
 						echo "<h3>No Trains Found.</h3>";
@@ -189,7 +189,8 @@
 					}
 				}
 			?>
-			<br><br><br><br>
+			<br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br>
 			<?php include('footer.php'); ?>
 </body>
 </html>
