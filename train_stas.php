@@ -209,7 +209,7 @@ if (isset($_POST["track_train"])) {
         // Retrieve the next station's details
         $queryNextStation = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
                              FROM `train_schedule`
-                             WHERE `Train_No` = ? AND TIME(`Departure_Time`) >= TIME(?)
+                             WHERE `Train_No` = ? AND TIME(`Departure_Time`) >=TIME(?)
                              ORDER BY `SN` ASC LIMIT 1";
 
         $stmtNextStation = $db->prepare($queryNextStation);
@@ -219,10 +219,18 @@ if (isset($_POST["track_train"])) {
         $stmtNextStation->bind_result($sn, $stationName, $routeNumber, $arrivalTime, $departureTime, $distance, $stationCode);
 
         if ($stmtNextStation->num_rows > 0 && $stmtNextStation->fetch()) {
+          date_default_timezone_set('Asia/Kolkata');
+
             $nextStationName = $stationName;
-            $nextDepartureTime = $departureTime;
-            $timeToNextStation = strtotime($nextDepartureTime) - strtotime($currentTime);
-            $formattedTime = date("H:i:s", $timeToNextStation); // Format time as hour:min:seconds
+            $nextArrivalTime = $arrivalTime;
+            $timeToNextStation = strtotime($nextArrivalTime) - strtotime($currentTime);
+            $seconds = $timeToNextStation;
+
+            $hours = floor($seconds / 3600);
+            $minutes = floor(($seconds % 3600) / 60);
+            $seconds = $seconds % 60;
+            
+            $formattedTime = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
 			echo "<center><div class='train-info'>";
 			echo "<h1>Train is not at any station.</h1>";
 			echo "<p>Next station: $nextStationName</p>";
