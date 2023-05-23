@@ -229,10 +229,24 @@ if (isset($_POST["track_train"])) {
 			echo "<p>Time to reach: $formattedTime</p>";
 			echo "</div></center>";
 					} else {
-            echo "<div class='train-info'><h1>Train information not available.</h1></div>";
+            $stmtNextStation->close();
+
+            $queryLastStation = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
+                             FROM `train_schedule`
+                             WHERE `Train_No` = ? 
+                             ORDER BY `SN` DESC LIMIT 1";
+             $stmtLastStation = $db->prepare($queryLastStation);
+             $stmtLastStation->bind_param("s", $train_no);
+             $stmtLastStation->execute();
+             $stmtLastStation->store_result();
+             $stmtLastStation->bind_result($sn, $stationName, $routeNumber, $arrivalTime, $departureTime, $distance, $stationCode);
+              $stmtLastStation->fetch();
+             $laststation=$stationName;
+            echo "<div class='train-info'><h1>Train is at $laststation.</h1></div>";
+            $stmtLastStation->close();
+
         }
 
-        $stmtNextStation->close();
     }
 
 
