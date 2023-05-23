@@ -102,6 +102,12 @@
 			</div>
 		</form>
 			<?php
+			 if (mysqli_errno($connection) == 1644) {
+        $errorResult = mysqli_query($connection, "SHOW WARNINGS");
+        $errorRow = mysqli_fetch_assoc($errorResult);
+        $errorMessage = $errorRow['Message'];
+        echo "Error: " . $errorMessage;
+    }
 			if(isset($_POST["trains"])){
 				$from=mysqli_real_escape_string($db,$_POST['from']);
 				$to=mysqli_real_escape_string($db,$_POST['to']);
