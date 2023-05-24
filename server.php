@@ -19,7 +19,6 @@
         $r1 = mysqli_query($db, $q1);
         $r2 = mysqli_query($db, $q2);
 
-        // Ensure that form fields are filled properly
         if (empty($username)) {
             array_push($errors, "Username is required");
         }
@@ -81,7 +80,6 @@
 
     }
 
-    // Logout
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);

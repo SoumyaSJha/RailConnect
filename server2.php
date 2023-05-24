@@ -7,7 +7,6 @@
 
 	$db=mysqli_connect('localhost','root','soumyajha126','registration');
 
-	//if registration button is clicked
 	if(isset($_POST['trains'])){
 		$from=mysqli_real_escape_string($db,$_POST['from']);
 		$to=mysqli_real_escape_string($db,$_POST['to']);

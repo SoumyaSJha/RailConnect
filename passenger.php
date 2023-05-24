@@ -82,7 +82,7 @@
 			    </div>
 			    <div class="col-md mb-3">
 			      <label for="validationDefault02">Age</label>
-			      <input type="number" class="form-control" id="validationDefault02" name="age[<?php echo $i;?>]" value="<?php if (isset($_POST['age'])) echo $_POST['age']; ?>" required>
+				  <input type="number" class="form-control" id="validationDefault02" name="age[<?php echo $i;?>]" value="<?php if (isset($_POST['age'])) echo $_POST['age']; ?>" required min="1">
 			    </div>
 			    <div class="col-md mb-3">
 			      <label for="validationDefault02">Gender</label>

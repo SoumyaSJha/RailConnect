@@ -190,7 +190,7 @@ if (isset($_POST["track_train"])) {
         $stmt->fetch();
         $remainingTime = strtotime($departureTime) - strtotime($currentTime);
 
-        if ($remainingTime <= 0) {
+        if ($remainingTime = 0) {
             // Train is about to depart or has already departed
             if ($stmt->fetch()) {
                 $nextStationName = $stationName;
@@ -231,13 +231,33 @@ if (isset($_POST["track_train"])) {
             $seconds = $seconds % 60;
             
             $formattedTime = sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
-			echo "<center><div class='train-info'>";
+            if ($formattedTime>0){			echo "<center><div class='train-info'>";
 			echo "<h1>Train is not at any station.</h1>";
 			echo "<p>Next station: $nextStationName</p>";
 			echo "<p>Time to reach: $formattedTime</p>";
-			echo "</div></center>";
+			echo "</div></center>";}
+      else{
+        $stmtNextStation->close();
+
+
+            $queryLastStation = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
+                             FROM `train_schedule`
+                             WHERE `Train_No` = ? 
+                             ORDER BY `SN` DESC LIMIT 1";
+             $stmtLastStation = $db->prepare($queryLastStation);
+             $stmtLastStation->bind_param("s", $train_no);
+             $stmtLastStation->execute();
+             $stmtLastStation->store_result();
+             $stmtLastStation->bind_result($sn, $stationName, $routeNumber, $arrivalTime, $departureTime, $distance, $stationCode);
+              $stmtLastStation->fetch();
+             $laststation=$stationName;
+            echo "<div class='train-info'><h1>Train is at $laststation.</h1></div>";
+            $stmtLastStation->close();
+      }
+
 					} else {
             $stmtNextStation->close();
+
 
             $queryLastStation = "SELECT `SN`, `Station_Name`, `Route_Number`, `Arrival_time`, `Departure_Time`, `Distance`, `Station_Code`
                              FROM `train_schedule`
