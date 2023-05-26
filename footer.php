@@ -9,9 +9,9 @@
 
   
       <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-4">
-        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size:20px ;">Railways Connect: Your Gateway to Unforgettable Journeys</h6>
+        <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size:20px ;">RailConnect: Your Gateway to Unforgettable Journeys</h6>
 
-        <p >At Railways Connect, we believe that every journey holds the promise of adventure, discovery, and unforgettable memories. With our commitment to excellence, we strive to provide you with a seamless and delightful travel experience from start to finish.</p>
+        <p >At RailConnect, we believe that every journey holds the promise of adventure, discovery, and unforgettable memories. With our commitment to excellence, we strive to provide you with a seamless and delightful travel experience from start to finish.</p>
       </div>
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
   <h6 class="text-uppercase mb-4 font-weight-bold" style="font-size:20px;">Useful links</h6>
