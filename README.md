@@ -15,8 +15,5 @@ RailConnect is a comprehensive Railway Management System developed using PHP. It
 - MySQL (or other compatible relational database)
 - Web server (e.g., Apache)
 
-## Database design 
-![image](https://github.com/SoumyaSJha/RailConnect/assets/100116788/17ac843e-59fb-40bf-bc55-18bf497c2ce1)
-![image](https://github.com/SoumyaSJha/RailConnect/assets/100116788/ed9b26d6-8c82-4426-8b63-49f32bf6b3e1)
-The tables in this database  normalized and  in 3NF. 
+
 
